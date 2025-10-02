@@ -11,7 +11,8 @@ export default function UserRegister() {
     const [formData, setformData] = useState({
         fullName: "",
         email: "",
-        password: ""
+        password: "",
+        phone: ""
     })
     
     const handleChange = (e) => {
@@ -27,21 +28,25 @@ export default function UserRegister() {
                 fullName: "",
                 email: "",
                 password: "",
+                phone: ""
             });
+
+            navigate("/user/login");
         } catch (error) {
             alert("Registration failed. Please try again.");
+
+            navigate("/user/register");
         }
 
-        navigate("/user/login");
     }
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-start bg-cover pt-20" style={{ backgroundImage: `url(${bg})` }}>
-            <div className="p-5 bg-white rounded-b-3xl rounded-l-3xl mb-20">
+        <div className="min-h-screen flex flex-col items-center justify-start bg-cover pt-15" style={{ backgroundImage: `url(${bg})` }}>
+            <div className="p-5 bg-white rounded-b-3xl rounded-l-3xl mb-15">
             <img src={logo} alt="" className="h-20 w-20" />
             </div>
-            <form onSubmit={handleSubmit} className="w-full h-163 p-10 bg-[#fafafaea] rounded-tl-[10vh]">
-            <h2 className="text-4xl mt-6 mb-14 font-semibold text-black text-center">
+            <form onSubmit={handleSubmit} className="w-full min-h-163 p-10 bg-[#fafafaea] rounded-tl-[10vh]">
+            <h2 className="text-4xl mt-4 mb-12 font-semibold text-black text-center">
                 Sign Up
             </h2>
             <input
@@ -67,13 +72,24 @@ export default function UserRegister() {
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
+                />
+            <input
+                className="w-full px-4 py-5 rounded-xl outline-none bg-white mt-5"
+                type="number"
+                name="phone"
+                placeholder="Phone No."
+                value={formData.phone}
+                onChange={handleChange}
             />
             <button type="submit" className="w-full py-5 rounded-b-2xl rounded-l-2xl font-semibold mt-6 bg-black text-white">
                 Sign Up
             </button>
-            <div className="mt-21 text-center">
+            <div className="mt-12 text-center">
                 <h1 className="font-semibold">
-                Already have an account ? <Link to="/user/login" className="underline">Log in</Link>
+                    Already have an account ? <Link to="/user/login" className="underline">Log in</Link>
+                </h1>
+                <h1 className="font-semibold">
+                    Food Partner ? <Link to="/foodpartner/register" className="underline">Click here</Link>
                 </h1>
             </div>
             </form>

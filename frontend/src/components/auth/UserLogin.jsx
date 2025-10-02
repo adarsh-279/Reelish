@@ -26,11 +26,14 @@ export default function UserLogin() {
                 email: "",
                 password: "",
             });
+
+            navigate("/home");
         } catch (error) {
             alert("Login failed. Please try again.");
+
+            navigate("/user/login");
         }
 
-        navigate("/home");
     }
 
     return (
@@ -62,9 +65,12 @@ export default function UserLogin() {
                 Login
             </button>
             <div className="mt-25 text-center">
-            <h1 className="font-semibold">
-                Don't have any account ? <Link to="/user/register" className="underline">Sign up</Link>
-            </h1>
+                <h1 className="font-semibold">
+                    Don't have any account ? <Link to="/user/register" className="underline">Sign up</Link>
+                </h1>
+                <h1 className="font-semibold">
+                    Food Partner ? <Link to="/foodpartner/register" className="underline">Click here</Link>
+                </h1>
             </div>
         </form>
         </div>
