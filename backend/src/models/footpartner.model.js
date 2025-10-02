@@ -15,6 +15,16 @@ const foodPartnerSchema = new mongoose.Schema({
     password: {
         type: String,
         minlength: 6
+    },
+    address: {
+        type: String,
+        required: true,
+    },
+    phone: {
+        type: Number,
+        required: true,
+        minlength: 10,
+        maxlength: 10
     }
 },
     {
