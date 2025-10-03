@@ -10,11 +10,12 @@ const foodSchema = new mongoose.Schema({
         required: true
     },
     description: {
-        type: String
+        type: String,
+        required:true
     },
     foodPartner: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'footpartner'
+        ref: 'foodpartner'
     }
 })
 

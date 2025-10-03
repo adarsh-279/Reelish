@@ -20,7 +20,7 @@ async function createFood(req, res) {
 }
 
 async function getFoodItems(req, res) {
-    const foodItems = await foodModel.find({})
+    const foodItems = await foodModel.find({}).populate("foodPartner", "fullName profileImage")
 
     res.status(200).json({
         message: "Food items fetched sucessfully",
