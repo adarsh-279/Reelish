@@ -28,7 +28,25 @@ async function getFoodItems(req, res) {
     })
 }
 
+async function getFoodItemsByPartner(req, res) {
+    const { id } = req.params;
+    try {
+        const foodItems = await foodModel
+            .find({ foodPartner: id })
+            .populate("foodPartner", "fullName profileImage");
+
+    res.status(200).json({
+        message: "Food items fetched successfully",
+        foodItems,
+    });
+    } catch (error) {
+        res.status(500).json({ message: "Server error" });
+    }
+}
+
+
 module.exports = {
     createFood,
-    getFoodItems
+    getFoodItems,
+    getFoodItemsByPartner
 }

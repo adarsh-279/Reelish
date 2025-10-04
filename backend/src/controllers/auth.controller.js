@@ -1,5 +1,5 @@
 const userModel = require('../models/user.model')
-const foodPartnerModel = require('../models/footpartner.model')
+const foodPartnerModel = require('../models/foodpartner.model')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
@@ -168,6 +168,20 @@ async function logoutFoodPartner(req, res) {
     });
 }
 
+async function fetchFoodPartner(req,res) {
+    const { id } = req.params;
+
+    try {
+        const foodPartner = await foodPartnerModel.findById(id).select('-password');
+        if (!foodPartner) {
+            return res.status(404).json({ message: "Food Partner not found" });
+        }
+        res.status(200).json({ partner: foodPartner });
+    } catch (error) {
+        res.status(500).json({ message: "Server error" });
+    }
+}
+
 module.exports = {
     registerUser,
     loginUser,
@@ -175,4 +189,5 @@ module.exports = {
     registerFoodPartner,
     loginFoodPartner,
     logoutFoodPartner,
+    fetchFoodPartner
 }
