@@ -6,6 +6,4 @@ const connectDB = require("./src/db/db");
 
 connectDB();
 
-app.listen(8000, () => {
-  console.log("Sever running on port 8000");
-});
+module.exports = app
