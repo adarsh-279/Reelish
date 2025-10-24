@@ -1,29 +1,23 @@
 {
-    "version": 2,
-    "builds": [
-        {
-        "src": "package.json",
-        "use": "@vercel/static-build",
-        "config": { "distDir": "dist" }
-        }
-    ],
-    "routes": [
-        {
-        "src": "^/api/(.*)",
-        "dest": "https://reelish.onrender.com/api/$1"
-        },
-        {
-        "src": "/(.*)",
-        "dest": "/index.html"
-        }
-    ],
-    "rewrites": [
-        {
-        "source": "/(.*)",
-        "destination": "/index.html"
-        }
-    ],
-    "buildCommand": "npm run build",
-    "outputDirectory": "dist",
-    "framework": "vite"
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://reelish.onrender.com/api/:path*"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/index.html"
+    }
+  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite"
 }
