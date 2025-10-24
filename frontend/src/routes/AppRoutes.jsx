@@ -5,6 +5,7 @@ import UserLogin from "../components/auth/UserLogin";
 import PartnerRegister from "../components/auth/PartnerRegister";
 import PartnerLogin from "../components/auth/PartnerLogin";
 import Home from "../pages/Home";
+import Landing from '../pages/Landing'
 import CreateFood from "../pages/CreateFood";
 import FoodPartnerProfile from "../components/profile/FoodPartnerProfile";
 import PartnerProfileUser from "../components/profile/PartnerProfileUser";
@@ -12,6 +13,7 @@ import PartnerProfileUser from "../components/profile/PartnerProfileUser";
 const AppRoutes = () => {
   return (
     <Routes>
+      <Route path="/" element={<Landing />} />
       <Route path="/home" element={<Home />} />
       <Route path="/user/register" element={<UserRegister />} />
       <Route path="/user/login" element={<UserLogin />} />
