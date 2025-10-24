@@ -1,14 +1,15 @@
-// db connection logic
-
+// src/db/db.js
 const mongoose = require("mongoose");
 
 function connectDB() {
-    mongoose.connect(process.env.MONGODB_URL)
+    return mongoose
+        .connect(process.env.MONGODB_URL)
         .then(() => {
-            console.log("Mongoose connected");
+            console.log("✅ Mongoose connected");
         })
         .catch((err) => {
-            console.log("Mngoose not connected : ", err);
+            console.error("❌ Mongoose not connected:", err);
+            throw err;
         });
 }
 
